@@ -1,0 +1,115 @@
+{
+  "kind": "collectionType",
+  "collectionName": "items",
+  "info": {
+    "name": "Item",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "condition": {
+      "type": "enumeration",
+      "enum": [
+        "excellent",
+        "great",
+        "good",
+        "fair",
+        "bad"
+      ],
+      "required": true
+    },
+    "photo": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "color": {
+      "type": "enumeration",
+      "enum": [
+        "green",
+        "red",
+        "blue",
+        "yellow",
+        "multi",
+        "black",
+        "white"
+      ]
+    },
+    "value": {
+      "required": true,
+      "default": 100,
+      "type": "integer"
+    },
+    "rating": {
+      "type": "integer",
+      "default": 5,
+      "max": 10
+    },
+    "location": {
+      "type": "string"
+    },
+    "active": {
+      "type": "boolean",
+      "default": true
+    },
+    "pending": {
+      "type": "boolean",
+      "default": false
+    },
+    "accepted": {
+      "type": "boolean",
+      "default": false
+    },
+    "delivered": {
+      "type": "boolean",
+      "default": false
+    },
+    "user": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "items"
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": false
+    },
+    "size": {
+      "type": "enumeration",
+      "enum": [
+        "small",
+        "medium",
+        "large",
+        "extra_large"
+      ],
+      "default": "medium",
+      "required": true
+    },
+    "category": {
+      "via": "items",
+      "model": "category"
+    },
+    "requests": {
+      "via": "item",
+      "collection": "request"
+    }
+  }
+}

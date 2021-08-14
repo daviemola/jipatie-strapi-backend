@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "requests",
+  "info": {
+    "name": "request",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "accepted": {
+      "type": "boolean",
+      "default": false
+    },
+    "delivered": {
+      "type": "boolean",
+      "default": false
+    },
+    "item": {
+      "model": "item",
+      "via": "requests"
+    },
+    "requested_by": {
+      "plugin": "users-permissions",
+      "model": "user",
+      "via": "requests"
+    },
+    "accepted_at": {
+      "type": "biginteger"
+    },
+    "delivered_at": {
+      "type": "biginteger"
+    }
+  }
+}
