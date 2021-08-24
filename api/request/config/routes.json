@@ -10,6 +10,22 @@
     },
     {
       "method": "GET",
+      "path": "/requests/:itemid/item",
+      "handler": "request.itemrequests",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/requests/countme",
+      "handler": "request.countme",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
       "path": "/requests/me",
       "handler": "request.me",
       "config": {
@@ -42,7 +58,7 @@
     },
     {
       "method": "PUT",
-      "path": "/requests/:id",
+      "path": "/requests/:id/:userid",
       "handler": "request.update",
       "config": {
         "policies": []

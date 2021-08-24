@@ -4,7 +4,7 @@ module.exports = ({ env }) => ({
   // url: 'https://4de3d9a719a4.ngrok.io',
   admin: {
     auth: {
-      secret: env('ADMIN_JWT_SECRET', 'c0285d865318722c08a7feecad546858'),
+      secret: env('ADMIN_JWT_SECRET'),
     },
   },
 })

@@ -2,6 +2,15 @@
   "routes": [
     {
       "method": "GET",
+      "path": "/items/countme",
+      "handler": "item.countme",
+      "config": {
+        "policies": []
+      }
+    },
+
+    {
+      "method": "GET",
       "path": "/items",
       "handler": "item.find",
       "config": {
@@ -20,6 +29,14 @@
       "method": "GET",
       "path": "/items/count",
       "handler": "item.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/items/:slug",
+      "handler": "item.findBySlug",
       "config": {
         "policies": []
       }

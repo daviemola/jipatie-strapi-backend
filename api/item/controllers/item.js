@@ -6,9 +6,25 @@ const { sanitizeEntity } = require('strapi-utils')
  */
 
 module.exports = {
-  // Get items associated with a user
+  //
 
-  async me(ctx) {
+  async findBySlug(ctx) {
+    const { slug } = ctx.params
+    const user = ctx.state.user
+
+    if (!user) {
+      return ctx.badRequest(null, [
+        { messages: [{ id: 'No authorization header was found' }] },
+      ])
+    }
+
+    const entity = await strapi.services.item.findOne({ slug })
+    return sanitizeEntity(entity, { model: strapi.models.item })
+  },
+
+  //
+
+  async countme(ctx) {
     const user = ctx.state.user
 
     if (!user) {
@@ -17,6 +33,26 @@ module.exports = {
       ])
     }
     const data = await strapi.services.item.find({ user: user.id })
+
+    return sanitizeEntity(data.length, { model: strapi.models.item })
+  },
+
+  // Get items associated with a user
+
+  async me(ctx) {
+    const user = ctx.state.user
+    const params = ctx.query
+
+    if (!user) {
+      return ctx.badRequest(null, [
+        { messages: [{ id: 'No authorization header was found' }] },
+      ])
+    }
+    const data = await strapi.services.item.find({
+      user: user.id,
+      _limit: params._limit,
+      _start: params._start,
+    })
 
     if (!data) {
       return ctx.notFound()

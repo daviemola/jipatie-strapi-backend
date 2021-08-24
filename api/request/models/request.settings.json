@@ -34,6 +34,26 @@
     },
     "delivered_at": {
       "type": "biginteger"
+    },
+    "description": {
+      "type": "text"
+    },
+    "item_owner": {
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "phone_number": {
+      "type": "biginteger",
+      "required": false,
+      "unique": false
+    },
+    "alternative_phone_no": {
+      "type": "biginteger",
+      "required": false
+    },
+    "location": {
+      "type": "text",
+      "required": false
     }
   }
 }

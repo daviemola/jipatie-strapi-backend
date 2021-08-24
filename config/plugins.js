@@ -12,5 +12,14 @@ module.exports = ({ env }) => ({
       delete: {},
     },
   },
+  email: {
+    provider: 'sendinblue',
+    providerOptions: {
+      sendinblue_api_key: env('SENDINBLUE_API_KEY'),
+      sendinblue_default_replyto: env('FROM_EMAIL'),
+      sendinblue_default_from: env('FROM_EMAIL'),
+      sendinblue_default_from_name: env('FROM_NAME'),
+    },
+  },
   // ...
 })
